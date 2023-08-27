@@ -1,0 +1,2 @@
+CBAM可以加在PSPModule中，也可以加在nn.Conv2d(out_channel//4, num_classes, kernel_size=1)后面。这两种方法都是可以的，但具体应该在哪里添加CBAM取决于你的具体应用场景和需求。
+在PSPModule中添加CBAM可以让注意力机制应用到池化后的特征图中，从而更好地捕捉不同尺度下的特征信息。而在nn.Conv2d(out_channel//4, num_classes, kernel_size=1)后添加CBAM可以让注意力机制应用到卷积后的特征图中，从而更好地捕捉不同通道之间的特征关系。具体应该根据具体情况进行选择。

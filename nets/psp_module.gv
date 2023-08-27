@@ -1,0 +1,55 @@
+// _PSPModule
+digraph {
+	rankdir=TB
+	subgraph cluster_stages {
+		color=lightgrey label=stages style=filled
+		stage0 [label="stage0
+(AdaptiveAvgPool2d
+Conv2d
+BatchNorm2d
+ReLU)" shape=box]
+		stage1 [label="stage1
+(AdaptiveAvgPool2d
+Conv2d
+BatchNorm2d
+ReLU)" shape=box]
+		stage2 [label="stage2
+(AdaptiveAvgPool2d
+Conv2d
+BatchNorm2d
+ReLU)" shape=box]
+		stage3 [label="stage3
+(AdaptiveAvgPool2d
+Conv2d
+BatchNorm2d
+ReLU)" shape=box]
+	}
+	subgraph cluster_ecas {
+		color=yellow label=ecas style=filled
+		eca0 [label="eca0
+(ECA_Module)" shape=box]
+		eca1 [label="eca1
+(ECA_Module)" shape=box]
+		eca2 [label="eca2
+(ECA_Module)" shape=box]
+		eca3 [label="eca3
+(ECA_Module)" shape=box]
+	}
+	features [label=features shape=box]
+	concat [label="torch.cat" shape=box]
+	bottleneck [label="bottleneck
+(Conv2d
+BatchNorm2d
+ReLU
+Dropout2d)" shape=box]
+	features -> concat
+	concat -> bottleneck
+	stage0 -> concat
+	eca0 -> stage0
+	stage1 -> concat
+	eca1 -> stage1
+	stage2 -> concat
+	eca2 -> stage2
+	stage3 -> concat
+	eca3 -> stage3
+}

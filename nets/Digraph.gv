@@ -1,0 +1,25 @@
+// PSP Module
+digraph {
+	subgraph cluster1 {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		input -> prior_1x1
+		input -> prior_2x2
+		input -> prior_3x3
+		input -> prior_6x6
+		input [label="Input
+[channels]" shape=plaintext]
+		prior_1x1 [label="1x1
+[channels/4]"]
+		prior_2x2 [label="2x2
+[channels/4]"]
+		prior_3x3 [label="3x3
+[channels/4]"]
+		prior_6x6 [label="6x6
+[channels/4]"]
+	}
+	prior_1x1 -> output
+	prior_2x2 -> output
+	prior_3x3 -> output
+	prior_6x6 -> output
+}
